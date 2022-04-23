@@ -47,3 +47,17 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To github.com:’branch’
  * [new branch]      main -> main
 Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+*参考（ありがとうございます）
+とりあえずコミットする
+https://qiita.com/nnahito/items/565f8755e70c51532459
+ブランチ名はmainかmasterか
+https://deepblue-ts.co.jp/git/git-push-error/
+Ssh接続を設定する
+https://qiita.com/mumucochimu/items/da6b392568b0d8d21d7d
+公開鍵関連コマンド
+https://qiita.com/shizuma/items/2b2f873a0034839e47ce
+Pushでエラーが出たらHEADをつけると良いかもしれない
+https://qiita.com/kenkono/items/c488ec9559f6cca34313
+Git commit/pushでエラーが出た時の対処
+https://qiita.com/tokio_k_/items/a95229217ec7ea9186c5
