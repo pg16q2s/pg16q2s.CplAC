@@ -1,2 +1,49 @@
- 
-日本語？
+初回コミットに苦戦したので、トラブルとその対処を残しておく。
+
+*ssh接続
+0. 現象
+git push origin main
+を行なったとき、以下のようなエラーが出る。
+fatal: Authentication failed for 'https://github.com/'username'/'branch'/'
+Ssh接続がうまくできていなかったのが原因。
+
+1. 公開鍵(hoge.pub)をgithubに置いてあげる必要がある。公開鍵は使いまわしてOK。
+https://github.com/settings/keys
+
+秘密鍵から公開鍵が作れる。
+ssh-keygen -y -f ~/.ssh/client_rsa > ~/.ssh/client_rsa_test.pub
+
+公開鍵コピーのコマンド(for mac)は
+pbcopy < ~/.ssh/id_rsa.pub
+
+リモートのURLをssh接続用に設定する必要がある。
+git remote set-url origin https://github.com/pg16q2s/pg16q2s.CplAC.git以下コマンドで
+リモートの情報は以下で確認できる。
+git remote -v
+Ssh接続を確認。Hi pg16q2s! なるメッセージが出たらOK.
+ssh -T github
+
+*なぜかpushできない
+0. 現象
+git push origin main
+を行なったとき、
+error: failed to push some refs to　... というエラ〜メッセージが出る。
+
+とりあえずよくわからないまま設定ファイルを消した（多分よくない）
+rm -r ./.git
+
+.gitが複数階層にまたがっているとgit addできないらしい
+困ったらgit statusで状況確認。
+Visual studioが勝手に.gitファイルを作ってしまっているので対処が必要っぽい。
+
+Commitした後ファイル移動してしまっていたので、commitがpushできないようなことをしていた模様。
+error: src refspec ’branch’ does not match any
+Git commit -m "commit message"で再度コミットしなおして解決(？)
+コミットが成功すると、以下のようなメッセージが出てきた。
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 215 bytes | 43.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:’branch’
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
